@@ -1,6 +1,6 @@
 JWT -> User -> token -> Request
     -> Pwd  ->
-    
+
 
 Postman
 add new Request
@@ -13,4 +13,5 @@ Response
     {
         "token":"xyzAuBD....."
     }
+
 
