@@ -1,0 +1,16 @@
+JWT -> User -> token -> Request
+    -> Pwd  ->
+    
+
+Postman
+add new Request
+Post http://localhost:8888/api/auth/token
+body/raw/json
+    {
+    "username" : "userneme"
+    }
+Response
+    {
+        "token":"xyzAuBD....."
+    }
+
