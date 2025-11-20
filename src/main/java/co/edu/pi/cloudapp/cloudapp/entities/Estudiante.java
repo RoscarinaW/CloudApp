@@ -31,7 +31,7 @@ public class Estudiante {
     @Column(name = "ape_Estudiante", length = 80, nullable = false)
     private String apeEstudiantes;
 
-    @Column(name = "fecha_Estudiante")
+    @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
     @Column(name = "email", length = 100, nullable = false)

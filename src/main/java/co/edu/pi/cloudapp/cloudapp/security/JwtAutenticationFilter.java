@@ -26,7 +26,7 @@ public class JwtAutenticationFilter  extends OncePerRequestFilter{
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filter) throws ServletException, IOException{
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if(authHeader != null && authHeader.startsWith( "Bearer,", 0)) {
+        if(authHeader != null && authHeader.startsWith( "Bearer")) {
             String token = authHeader.substring(7);
             try{
                 var claims = jwtUtil.validateTokenAndGetClaims(token);
