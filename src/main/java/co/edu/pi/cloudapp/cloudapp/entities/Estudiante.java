@@ -23,13 +23,13 @@ import lombok.Setter;
 public class Estudiante {
     @Id
     @Column(name = "id_Estudiante")
-    private Long idEstudiantes;
+    private Long idEstudiante;
 
     @Column(name = "nom_Estudiante", length = 80, nullable = false)
     private String nomEstudiante;
 
     @Column(name = "ape_Estudiante", length = 80, nullable = false)
-    private String apeEstudiantes;
+    private String apeEstudiante;
 
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
