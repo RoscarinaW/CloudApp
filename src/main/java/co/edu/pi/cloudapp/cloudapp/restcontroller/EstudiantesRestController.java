@@ -1,5 +1,6 @@
 package co.edu.pi.cloudapp.cloudapp.restcontroller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.pi.cloudapp.cloudapp.dto.EstudianteDTO;
 import co.edu.pi.cloudapp.cloudapp.services.IEstudianteService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -23,5 +27,12 @@ public class EstudiantesRestController {
     public ResponseEntity<List<EstudianteDTO>> getAll(){
         return ResponseEntity.ok(estudianteService.findAll());
     }
+
+    @PostMapping
+    public ResponseEntity<EstudianteDTO> create(@RequestBody EstudianteDTO dto) {
+        EstudianteDTO created = estudianteService.create(dto);
+        return ResponseEntity.created(URI.create("/api/estudiantes/" + created.getApeEstudiante())).body(created);
+    }
+    
 
 }
