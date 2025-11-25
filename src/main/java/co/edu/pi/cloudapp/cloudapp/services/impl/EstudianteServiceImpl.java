@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.pi.cloudapp.cloudapp.dto.EstudianteDTO;
+import co.edu.pi.cloudapp.cloudapp.entities.Estudiante;
 import co.edu.pi.cloudapp.cloudapp.repositories.IEstudianteRepository;
 import co.edu.pi.cloudapp.cloudapp.services.IEstudianteService;
 
@@ -30,8 +31,9 @@ public class EstudianteServiceImpl implements IEstudianteService{
 
     @Override
     public EstudianteDTO create(EstudianteDTO estudianteDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        Estudiante entidad = modelMapper.map(estudianteDTO, Estudiante.class);
+        Estudiante saved = repoEstudiante.save(entidad);
+        return modelMapper.map(saved, EstudianteDTO.class);
     }
 
     @Override
