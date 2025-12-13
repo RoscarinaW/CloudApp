@@ -35,7 +35,14 @@ public class MateriaServiceImpl implements IMateriaService {
 
     @Override
     public MateriaDTO update(Long id, MateriaDTO materiaDTO) {
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        Materia existente = repoMateria.findById(id).orElseThrow(() -> new RuntimeException("Materia no encontrado"));
+        existente.setNomMateria(materiaDTO.getNomMateria());
+        existente.setCicloMateria(materiaDTO.getCicloMateria());
+        existente.setDescripMateria(materiaDTO.getDescripMateria());
+
+        Materia saved = repoMateria.save(existente);
+        return modelMapper.map(saved, MateriaDTO.class);
+
     }
 
     @Override

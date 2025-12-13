@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.pi.cloudapp.cloudapp.dto.EstudianteDTO;
 import co.edu.pi.cloudapp.cloudapp.services.IEstudianteService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -34,5 +36,15 @@ public class EstudiantesRestController {
         return ResponseEntity.created(URI.create("/api/estudiantes/" + created.getApeEstudiante())).body(created);
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<EstudianteDTO> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(estudianteService.findByid(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EstudianteDTO> update(@PathVariable Long id, @RequestBody EstudianteDTO dto) {
+        
+        return ResponseEntity.ok(estudianteService.update(id, dto));
+    }
 
 }
